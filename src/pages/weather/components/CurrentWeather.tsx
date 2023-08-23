@@ -12,11 +12,16 @@ import {
   IconTemperatureMinus,
   IconSunrise,
   IconSunset,
+  IconMapPinFilled,
+  IconCalendarPin,
 } from "@tabler/icons-react";
 
 import { CurrentWeatherI } from "./../../../utils/entities";
 import { capitalize, getHourAgo, getSunrise } from "../../../utils/utils";
 import CardWeather from "./CardWeather";
+import {
+  format,
+} from "date-fns";
 
 interface CurrentWeatherProps {
   data: CurrentWeatherI | null;
@@ -24,8 +29,8 @@ interface CurrentWeatherProps {
 
 const CurrentWeather = ({ data }: CurrentWeatherProps) => {
   return (
-    <Box className="flex gap-6 mt-4 h-full w-full">
-      <Box className="h-full max-w-[425px] w-2/6">
+    <Box className="flex flex-wrap gap-6 mt-4 h-full w-full">
+      <Box className="h-full max-w-[500px] w-max">
         <Card
           sx={{
             width: "100%",
@@ -38,8 +43,21 @@ const CurrentWeather = ({ data }: CurrentWeatherProps) => {
             <Typography variant="h3" color="white">
               {capitalize(data?.city_name || "")}
             </Typography>
-            <Typography variant="h6" color="white">
+            <Typography
+              variant="h6"
+              color="white"
+              className={"flex items-center gap-2"}
+            >
+              <IconMapPinFilled />
               {data?.country.name.common}
+            </Typography>
+            <Typography
+              variant="h6"
+              color="white"
+              className={"flex items-center gap-2"}
+            >
+              <IconCalendarPin />
+              {format(new Date(), "PP")}
             </Typography>
             <img
               src={`https://openweathermap.org/img/wn/${data?.weather[0].icon}.png`}
@@ -69,7 +87,7 @@ const CurrentWeather = ({ data }: CurrentWeatherProps) => {
                   "linear-gradient(270deg, rgba(42,73,125,1) 0%, rgba(42,67,106,1) 65%)",
                 borderRadius: "8px",
               }}
-              className="flex items-center justify-between mt-4"
+              className="flex items-center justify-between mt-4 gap-6"
             >
               <Box className="flex items-center gap-4">
                 <Icon sx={{ color: "#bfbfbf", width: "auto", height: "auto" }}>
@@ -85,7 +103,7 @@ const CurrentWeather = ({ data }: CurrentWeatherProps) => {
                 </Box>
               </Box>
               <Typography variant="h6" color="#e0e0e0">
-                {getHourAgo(data?.sys.sunrise || 0)} hours ago
+                {getHourAgo(data?.sys.sunrise || 0)}
               </Typography>
             </CardContent>
             <CardContent
@@ -110,7 +128,7 @@ const CurrentWeather = ({ data }: CurrentWeatherProps) => {
                 </Box>
               </Box>
               <Typography variant="h6" color="#e0e0e0">
-                {getHourAgo(data?.sys.sunset || 0)} hours ago
+                {getHourAgo(data?.sys.sunset || 0)}
               </Typography>
             </CardContent>
           </CardContent>
