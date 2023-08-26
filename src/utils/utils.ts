@@ -8,6 +8,10 @@ export const getSunrise = (value: number): string => {
   return format(fromUnixTime(value), "p");
 };
 
+export const getDateFromDt = (value: number) => {
+  return format(fromUnixTime(value), "P");
+};
+
 export const getHourAgo = (value: number): string => {
   return formatDistance(fromUnixTime(value), new Date(), {
     addSuffix: true,

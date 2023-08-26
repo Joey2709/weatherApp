@@ -2,6 +2,7 @@ import { useState } from "react";
 import { CurrentWeatherI } from "../utils/entities";
 
 const API_KEY = import.meta.env.VITE_API_KEY;
+const URL_BASE = "https://api.openweathermap.org/data/2.5/";
 
 const useFetch = () => {
   const [data, setData] = useState<CurrentWeatherI | null>(null);
@@ -15,7 +16,7 @@ const useFetch = () => {
 
     try {
       const respWeather = await fetch(
-        `https://api.openweathermap.org/data/2.5/weather?q=${city_name}&appid=${API_KEY}&units=metric`
+        `${URL_BASE}weather?q=${city_name}&appid=${API_KEY}&units=metric`
       );
 
       if (!respWeather.ok) {
@@ -33,16 +34,24 @@ const useFetch = () => {
 
       const responseDataCountry = await resCountry.json();
 
+      const respForecast = await fetch(
+        `${URL_BASE}forecast?lat=${responseDataWeather.coord.lat}&lon=${responseDataWeather.coord.lon}&appid=${API_KEY}&units=metric`
+      );
+
+      const respDataForecast = await respForecast.json();
+
       console.log({
         ...responseDataWeather,
         country: responseDataCountry,
         city_name,
+        forecast: respDataForecast,
       });
 
       setData({
         ...responseDataWeather,
         country: responseDataCountry,
         city_name,
+        forecast: respDataForecast,
       });
     } catch (error) {
       setError("Not found");
