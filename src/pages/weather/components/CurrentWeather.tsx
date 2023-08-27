@@ -33,20 +33,17 @@ const CurrentWeather = ({ data }: CurrentWeatherProps) => {
         <Card
           sx={{
             width: "100%",
-            background:
-              //"linear-gradient(132deg, rgba(66,83,110,1) 0%, rgba(20,45,80,1) 40%, rgba(16,43,84,1) 65%)",
-              //"#1F2B3B", darkmode
-              "#DFD7BF",
+            backgroundColor: "primary.main",
             height: "100%",
           }}
         >
           <CardContent>
-            <Typography variant="h3" /*color="white"*/ color="#3F2305">
+            <Typography variant="h3" color="text.secondary">
               {capitalize(data?.city_name || "")}
             </Typography>
             <Typography
               variant="h6"
-              color="#3F2305"
+              color="text.secondary"
               className={"flex items-center gap-2"}
             >
               <IconMapPinFilled />
@@ -54,7 +51,7 @@ const CurrentWeather = ({ data }: CurrentWeatherProps) => {
             </Typography>
             <Typography
               variant="h6"
-              color="#3F2305"
+              color="text.secondary"
               className={"flex items-center gap-2"}
             >
               <IconCalendarPin />
@@ -67,27 +64,24 @@ const CurrentWeather = ({ data }: CurrentWeatherProps) => {
               height="80px"
             />
             <Box className="flex justify-between">
-              <Typography variant="h2" color="#3F2305">
+              <Typography variant="h2" color="text.secondary">
                 {data?.main.temp.toFixed(0)}°C
               </Typography>
               <Typography
                 fontSize={30}
-                color="#3F2305"
+                color="text.secondary"
                 className="flex items-center h-[72px]"
               >
                 {capitalize(data?.weather[0].description || "")}
               </Typography>
             </Box>
             <hr className="border-[1.5px] border-gray-400 my-4" />
-            <Typography variant="h5" color="#3F2305">
+            <Typography variant="h5" color="text.secondary">
               Sunrise & Sunset
             </Typography>
             <CardContent
               sx={{
-                background:
-                  //"linear-gradient(270deg, rgba(42,73,125,1) 0%, rgba(42,67,106,1) 65%)",
-                  //"#35455E", darkmode
-                  "#F2EAD3",
+                backgroundColor: "background.paper",
                 borderRadius: "8px",
               }}
               className="flex items-center justify-between mt-4 gap-6"
@@ -100,7 +94,7 @@ const CurrentWeather = ({ data }: CurrentWeatherProps) => {
                   <Typography variant="h6" color="#bfbfbf">
                     Sunrise
                   </Typography>
-                  <Typography variant="h4" color="#3F2305">
+                  <Typography variant="h4" color="text.secondary">
                     {getSunrise(data?.sys.sunrise || 0)}
                   </Typography>
                 </Box>
@@ -111,10 +105,7 @@ const CurrentWeather = ({ data }: CurrentWeatherProps) => {
             </CardContent>
             <CardContent
               sx={{
-                background:
-                  //"linear-gradient(270deg, rgba(42,73,125,1) 0%, rgba(42,67,106,1) 65%)",
-                  //"#35455E", darkmode
-                  "#F2EAD3",
+                backgroundColor: "background.paper",
                 borderRadius: "8px",
               }}
               className="flex items-center justify-between mt-4"
@@ -127,7 +118,7 @@ const CurrentWeather = ({ data }: CurrentWeatherProps) => {
                   <Typography variant="h6" color="#bfbfbf">
                     Sunset
                   </Typography>
-                  <Typography variant="h4" color="#3F2305">
+                  <Typography variant="h4" color="text.secondary">
                     {getSunrise(data?.sys.sunset || 0)}
                   </Typography>
                 </Box>
@@ -189,7 +180,7 @@ const CurrentWeather = ({ data }: CurrentWeatherProps) => {
         </Map>
       </Box>
       <Box className="flex flex-col flex-1 gap-4 h-full">
-        <Typography variant="h5" color="#3F2305">
+        <Typography variant="h5" color="text.secondary">
           Hourly Forecast
         </Typography>
         <hr />

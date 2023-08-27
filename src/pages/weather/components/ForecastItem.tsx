@@ -10,21 +10,21 @@ interface ForecastItemProps {
 
 const ForecastItem = ({ dt, weather, main }: ForecastItemProps) => {
   return (
-    <Card className="min-h-[110px] !bg-[#DFD7BF] /*!bg-[#1F2B3B]*/">
+    <Card className="min-h-[110px]" sx={{ backgroundColor: "primary.main" }}>
       <CardContent className="flex items-center justify-between h-full">
         <Box>
-          <Typography variant="body1" color="#3F2305">
-            {getSunrise(dt || 0)}
+          <Typography variant="body1" color="text.secondary">
+            {getSunrise(dt)}
           </Typography>
-          <Typography variant="body1" color="#3F2305">
-            {getDateFromDt(dt || 0)}
+          <Typography variant="body1" color="text.secondary">
+            {getDateFromDt(dt)}
           </Typography>
         </Box>
         <Box>
-          <Typography variant="body1" color="#3F2305">
+          <Typography variant="body1" color="text.secondary">
             Conditions: {weather[0].description}
           </Typography>
-          <Typography variant="body1" color="#3F2305">
+          <Typography variant="body1" color="text.secondary">
             Humidity: {main.humidity}
           </Typography>
         </Box>
@@ -34,7 +34,7 @@ const ForecastItem = ({ dt, weather, main }: ForecastItemProps) => {
           width="65px"
           height="65px"
         />
-        <Typography variant="h4" color="#3F2305">
+        <Typography variant="h4" color="text.secondary">
           {main.temp.toFixed(0)}
         </Typography>
       </CardContent>

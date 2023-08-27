@@ -12,20 +12,20 @@ const CardWeather = ({ data, title, icon, unit }: CardWeatherProps) => {
     <Card
       sx={{
         flex: 1,
-        //backgroundColor: "#1F2B3B", darkmode
-        backgroundColor: "#DFD7BF",
+        backgroundColor: "primary.main",
         height: "min-content",
         minWidth: "161px",
       }}
     >
       <CardContent>
-        <Typography sx={{ fontSize: 18 }} color="#808691" gutterBottom>
+        <Typography sx={{ fontSize: 18 }} color="text.primary" gutterBottom>
           {title}
         </Typography>
         <Typography
           variant="h5"
           component="div"
-          className="flex items-center gap-2  text-[#3F2305] /*text-white*/ font-bold"
+          className="flex items-center gap-2 font-bold"
+          color="text.secondary"
         >
           <Icon sx={{ color: "#7599E0" }}>{icon}</Icon>
           {data} {unit}
