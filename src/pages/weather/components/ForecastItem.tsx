@@ -10,8 +10,11 @@ interface ForecastItemProps {
 
 const ForecastItem = ({ dt, weather, main }: ForecastItemProps) => {
   return (
-    <Card className="min-h-[110px]" sx={{ backgroundColor: "primary.main" }}>
-      <CardContent className="flex items-center justify-between h-full">
+    <Card
+      className="min-h-[110px]"
+      sx={{ backgroundColor: "primary.main", backgroundImage: "initial" }}
+    >
+      <CardContent className="flex flex-wrap items-center justify-between h-full">
         <Box>
           <Typography variant="body1" color="text.secondary">
             {getSunrise(dt)}
@@ -20,7 +23,7 @@ const ForecastItem = ({ dt, weather, main }: ForecastItemProps) => {
             {getDateFromDt(dt)}
           </Typography>
         </Box>
-        <Box>
+        <Box className="min-w-max">
           <Typography variant="body1" color="text.secondary">
             Conditions: {weather[0].description}
           </Typography>

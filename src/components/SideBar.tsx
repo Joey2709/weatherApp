@@ -1,21 +1,31 @@
+import { useNavigate } from "react-router-dom";
+
 import { Box, Button, Typography } from "@mui/material";
 import ThermostatIcon from "@mui/icons-material/Thermostat";
 import AppsIcon from "@mui/icons-material/Apps";
 import SettingsSuggestIcon from "@mui/icons-material/SettingsSuggest";
-import { useNavigate } from "react-router-dom";
+
+import { IconBrightnessDown, IconMoonStars } from "@tabler/icons-react";
+
+import SwitchDarkMode from "./SwitchDarkMode";
 
 const colorIcon = "#7599E0";
 
-const SideBar = () => {
-  const navigate = useNavigate();
+interface SideBarProps {
+  colorMode: {
+    toggleColorMode: () => void;
+  };
+}
 
+const SideBar = ({ colorMode }: SideBarProps) => {
+  const navigate = useNavigate();
   const handleClick = (str: string) => {
     navigate(`/${str}`);
   };
 
   return (
     <Box
-      className="flex flex-col w-[8%] p-4 rounded-lg gap-2 h-min"
+      className="flex flex-col w-[8%] p-4 rounded-lg gap-2 h-min  items-center"
       sx={{ backgroundColor: "primary.main" }}
     >
       <Button className="flex flex-col gap-3" disabled>
@@ -46,6 +56,11 @@ const SideBar = () => {
           Settings
         </Typography>
       </Button>
+      <SwitchDarkMode
+        onChange={colorMode.toggleColorMode}
+        icon={<IconBrightnessDown />}
+        checkedIcon={<IconMoonStars />}
+      />
     </Box>
   );
 };

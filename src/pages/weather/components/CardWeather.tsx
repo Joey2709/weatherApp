@@ -1,4 +1,4 @@
-import { Card, CardContent, Icon, Typography } from "@mui/material";
+import { Box, Card, CardContent, Icon, Typography } from "@mui/material";
 
 interface CardWeatherProps {
   data?: number | string;
@@ -15,6 +15,7 @@ const CardWeather = ({ data, title, icon, unit }: CardWeatherProps) => {
         backgroundColor: "primary.main",
         height: "min-content",
         minWidth: "161px",
+        backgroundImage: "initial",
       }}
     >
       <CardContent>

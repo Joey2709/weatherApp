@@ -35,6 +35,7 @@ const CurrentWeather = ({ data }: CurrentWeatherProps) => {
             width: "100%",
             backgroundColor: "primary.main",
             height: "100%",
+            backgroundImage: "initial",
           }}
         >
           <CardContent>

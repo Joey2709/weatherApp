@@ -1,15 +1,52 @@
-import { createTheme } from "@mui/material/styles";
+import { PaletteMode, createTheme } from "@mui/material";
+import { useMemo, useState } from "react";
 
-export const theme = createTheme({
+export const getDesignTokens = (mode: PaletteMode) => ({
   palette: {
-    mode: "dark", // Indica que este es un tema oscuro
-    primary: {
-      main: "#1e1e1e", // Color principal
-    },
-    secondary: {
-      main: "#ff9800", // Color secundario
-    },
-    // ...otros ajustes de color
+    mode,
+    ...(mode === "light"
+      ? {
+          // palette values for light mode
+          primary: { main: "#DFD7BF" },
+          background: {
+            paper: "#F2EAD3", //F2EAD3
+            main: "#f5f5f5",
+          },
+          text: {
+            primary: "#e5e5e5",
+            secondary: "#3F2305",
+          },
+        }
+      : {
+          // palette values for dark mode
+          primary: { main: "#35455E" }, //1F2B3B
+          background: {
+            paper: "#1F2B3B", //35455E
+            main: "#0b131e", //0b131e
+          },
+          text: {
+            primary: "#e5e5e5",
+            secondary: "#fff",
+          },
+        }),
   },
-  // ...otros ajustes de estilo
 });
+
+export const useDarkmode = () => {
+  const [mode, setMode] = useState<PaletteMode>("light");
+  const colorMode = useMemo(
+    () => ({
+      // The dark mode switch would invoke this method
+      toggleColorMode: () => {
+        setMode((prevMode: PaletteMode) =>
+          prevMode === "light" ? "dark" : "light"
+        );
+      },
+    }),
+    []
+  );
+
+  const theme = useMemo(() => createTheme(getDesignTokens(mode)), [mode]);
+
+  return { theme, colorMode };
+};
