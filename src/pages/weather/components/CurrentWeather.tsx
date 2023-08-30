@@ -28,7 +28,7 @@ interface CurrentWeatherProps {
 
 const CurrentWeather = ({ data }: CurrentWeatherProps) => {
   return (
-    <Box className="flex flex-wrap gap-6 mt-4 h-[85vh] w-full">
+    <Box className="flex flex-wrap gap-6 mt-4 h-[85vh] w-full pb-4">
       <Box className="h-full max-w-[500px] w-max">
         <Card
           sx={{

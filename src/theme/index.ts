@@ -33,7 +33,7 @@ export const getDesignTokens = (mode: PaletteMode) => ({
 });
 
 export const useDarkmode = () => {
-  const [mode, setMode] = useState<PaletteMode>("light");
+  const [mode, setMode] = useState<PaletteMode>("dark");
   const colorMode = useMemo(
     () => ({
       // The dark mode switch would invoke this method
@@ -48,5 +48,5 @@ export const useDarkmode = () => {
 
   const theme = useMemo(() => createTheme(getDesignTokens(mode)), [mode]);
 
-  return { theme, colorMode };
+  return { theme, colorMode, mode };
 };

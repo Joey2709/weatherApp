@@ -17,14 +17,14 @@ import "@fontsource/roboto/700.css";
 import { useDarkmode } from "./theme";
 
 function App() {
-  const { theme, colorMode } = useDarkmode();
+  const { theme, colorMode, mode } = useDarkmode();
   return (
     <ThemeProvider theme={theme}>
       <Box
         className="p-5 flex w-screen h-screen gap-7"
         sx={{ backgroundColor: "background.main" }}
       >
-        <SideBar colorMode={colorMode} />
+        <SideBar colorMode={colorMode} mode={mode} />
         <AppRouter />
       </Box>
     </ThemeProvider>
