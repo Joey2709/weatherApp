@@ -1,5 +1,5 @@
-import { Card, CardContent, Typography, Box } from "@mui/material";
-import Icon from "@mui/material/Icon";
+import { Card, CardContent, Typography, Box, Divider } from "@mui/material";
+import { SvgIcon } from "@mui/material";
 
 import {
   IconWind,
@@ -15,12 +15,15 @@ import {
   IconMapPinFilled,
   IconCalendarPin,
 } from "@tabler/icons-react";
+
+import { format } from "date-fns";
+
+import { Map, Marker } from "pigeon-maps";
+
+import CardWeather from "./CardWeatherItem";
+import ForecastItem from "./ForecastItem";
 import { CurrentWeatherI } from "./../../../utils/entities";
 import { capitalize, getHourAgo, getSunrise } from "../../../utils/utils";
-import CardWeather from "./CardWeather";
-import { format } from "date-fns";
-import { Map, Marker } from "pigeon-maps";
-import ForecastItem from "./ForecastItem";
 
 interface CurrentWeatherProps {
   data: CurrentWeatherI;
@@ -28,8 +31,23 @@ interface CurrentWeatherProps {
 
 const CurrentWeather = ({ data }: CurrentWeatherProps) => {
   return (
-    <Box className="flex flex-wrap gap-6 mt-4 h-[85vh] w-full pb-4">
-      <Box className="h-full max-w-[500px] w-max">
+    <Box
+      sx={{
+        display: "flex",
+        flexWrap: "wrap",
+        width: "100%",
+        gap: 2,
+        height: "85%",
+      }}
+      component="main"
+    >
+      <Box
+        sx={{
+          width: "30%",
+          minHeight: "min-content",
+        }}
+        component="section"
+      >
         <Card
           sx={{
             width: "100%",
@@ -40,130 +58,153 @@ const CurrentWeather = ({ data }: CurrentWeatherProps) => {
         >
           <CardContent>
             <Typography variant="h3" color="text.secondary">
-              {capitalize(data?.city_name || "")}
+              {capitalize(data.city_name)}
             </Typography>
             <Typography
               variant="h6"
               color="text.secondary"
-              className={"flex items-center gap-2"}
+              sx={{ display: "flex", alignItems: "center", gap: 1 }}
             >
               <IconMapPinFilled />
-              {data?.country.name.common}
+              {data.country.name.common}
             </Typography>
             <Typography
               variant="h6"
               color="text.secondary"
-              className={"flex items-center gap-2"}
+              sx={{ display: "flex", alignItems: "center", gap: 1 }}
             >
               <IconCalendarPin />
               {format(new Date(), "PP")}
             </Typography>
             <img
-              src={`https://openweathermap.org/img/wn/${data?.weather[0].icon}.png`}
-              alt={data?.weather[0].icon}
+              src={`https://openweathermap.org/img/wn/${data.weather[0].icon}.png`}
+              alt={data.weather[0].icon}
               width="80px"
               height="80px"
             />
-            <Box className="flex justify-between">
+            <Box sx={{ display: "flex", justifyContent: "space-between" }}>
               <Typography variant="h2" color="text.secondary">
-                {data?.main.temp.toFixed(0)}°C
+                {data.main.temp.toFixed(0)}°C
               </Typography>
               <Typography
                 fontSize={30}
                 color="text.secondary"
-                className="flex items-center h-[72px]"
+                sx={{ display: "flex", alignItems: "center", height: "72px" }}
               >
-                {capitalize(data?.weather[0].description || "")}
+                {capitalize(data.weather[0].description)}
               </Typography>
             </Box>
-            <hr className="border-[1.5px] border-gray-400 my-4" />
+            <Divider sx={{ marginY: 2 }} />
             <Typography variant="h5" color="text.secondary">
               Sunrise & Sunset
             </Typography>
             <CardContent
               sx={{
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "space-between",
+                gap: 2,
                 backgroundColor: "background.paper",
                 borderRadius: "8px",
               }}
-              className="flex items-center justify-between mt-4 gap-6"
             >
-              <Box className="flex items-center gap-4">
-                <Icon sx={{ color: "#bfbfbf", width: "auto", height: "auto" }}>
-                  <IconSunrise className="w-[55px] h-[55px]" />
-                </Icon>
-                <Box className="flex flex-col gap-2">
+              <Box sx={{ display: "flex", alignItems: "center", gap: 2 }}>
+                <SvgIcon
+                  sx={{ color: "#bfbfbf", width: "55px", height: "55px" }}
+                >
+                  <IconSunrise />
+                </SvgIcon>
+                <Box
+                  sx={{ display: "flex", flexDirection: "column", gap: 0.5 }}
+                >
                   <Typography variant="h6" color="#bfbfbf">
                     Sunrise
                   </Typography>
                   <Typography variant="h4" color="text.secondary">
-                    {getSunrise(data?.sys.sunrise || 0)}
+                    {getSunrise(data.sys.sunrise)}
                   </Typography>
                 </Box>
               </Box>
               <Typography variant="h6" color="#e0e0e0">
-                {getHourAgo(data?.sys.sunrise || 0)}
+                {getHourAgo(data.sys.sunrise)}
               </Typography>
             </CardContent>
             <CardContent
               sx={{
+                display: "center",
+                alignItems: "center",
+                justifyContent: "space-between",
+                mt: 2,
                 backgroundColor: "background.paper",
                 borderRadius: "8px",
               }}
-              className="flex items-center justify-between mt-4"
             >
-              <Box className="flex items-center gap-4">
-                <Icon sx={{ color: "#bfbfbf", width: "auto", height: "auto" }}>
-                  <IconSunset className="w-[55px] h-[55px]" />
-                </Icon>
-                <Box className="flex flex-col gap-2">
+              <Box sx={{ display: "flex", alignItems: "center", gap: 2 }}>
+                <SvgIcon
+                  sx={{ color: "#bfbfbf", width: "55px", height: "55px" }}
+                >
+                  <IconSunset />
+                </SvgIcon>
+                <Box
+                  sx={{ display: "flex", flexDirection: "column", gap: 0.5 }}
+                >
                   <Typography variant="h6" color="#bfbfbf">
                     Sunset
                   </Typography>
                   <Typography variant="h4" color="text.secondary">
-                    {getSunrise(data?.sys.sunset || 0)}
+                    {getSunrise(data.sys.sunset)}
                   </Typography>
                 </Box>
               </Box>
               <Typography variant="h6" color="#e0e0e0">
-                {getHourAgo(data?.sys.sunset || 0)}
+                {getHourAgo(data.sys.sunset)}
               </Typography>
             </CardContent>
           </CardContent>
         </Card>
       </Box>
-      <Box className="flex flex-wrap gap-6 h-min max-w-[448px]">
+      <Box
+        sx={{
+          display: "flex",
+          flexWrap: "wrap",
+          gap: 3,
+          height: "min-content",
+          maxWidth: "448px",
+        }}
+        component="section"
+      >
         <CardWeather
-          data={data?.wind.speed}
+          data={data.wind.speed}
           title={"Wind Speed"}
           icon={<IconWind />}
           unit={" m/s"}
         />
         <CardWeather
-          data={data?.main.pressure}
+          data={data.main.pressure}
           title={"Pressure"}
           icon={<IconBrandSpeedtest />}
           unit={" hPa"}
         />
         <CardWeather
-          data={data?.main.feels_like}
+          data={data.main.feels_like}
           title={"Feels Like"}
           icon={<IconTemperature />}
           unit={<IconTemperatureCelsius />}
         />
         <CardWeather
-          data={data?.main.temp_max}
+          data={data.main.temp_max}
           title={"Humidity"}
           icon={<IconDropletHalf2Filled />}
           unit={<IconPercentage />}
         />
         <CardWeather
-          data={data?.main.temp_min}
+          data={data.main.temp_min}
           title={"Temp Min"}
           icon={<IconTemperatureMinus />}
           unit={<IconTemperatureCelsius />}
         />
         <CardWeather
-          data={data?.main.temp_max}
+          data={data.main.temp_max}
           title={"Temp Max"}
           icon={<IconTemperaturePlus />}
           unit={<IconTemperatureCelsius />}
@@ -171,21 +212,29 @@ const CurrentWeather = ({ data }: CurrentWeatherProps) => {
         <Map
           height={300}
           defaultZoom={10}
-          center={[data?.coord.lat || 0, data?.coord.lon || 0]}
+          center={[data.coord.lat, data.coord.lon]}
         >
           <Marker
             width={40}
-            anchor={[data?.coord.lat || 0, data?.coord.lon || 0]}
+            anchor={[data.coord.lat, data.coord.lon]}
             color={"#ff0000"}
           />
         </Map>
       </Box>
-      <Box className="flex flex-col flex-1 gap-4 h-full">
+      <Box sx={{ display: "flex", gap: 2, height: "100%" }} component="section">
         <Typography variant="h5" color="text.secondary">
           Hourly Forecast
         </Typography>
-        <hr />
-        <Box className="flex flex-col gap-2 overflow-y-auto">
+        <Divider />
+        <Box
+          sx={{
+            display: "flex",
+            flexDirection: "column",
+            gap: 3,
+            overflowY: "auto",
+            maxHeight: "75vh",
+          }}
+        >
           {data?.forecast.list.map((e) => (
             <ForecastItem
               key={e.dt}

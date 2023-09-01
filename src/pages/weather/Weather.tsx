@@ -31,10 +31,29 @@ const Weather = () => {
   }, []);
 
   return (
-    <Box className="flex flex-col w-full" sx={{ color: "text.secondary" }}>
-      <form className="flex flex-col h-[15vh] gap-4 w-2/6 self-center">
+    <Box
+      sx={{
+        color: "text.secondary",
+        display: "flex",
+        flexDirection: "column",
+        width: "100%",
+        minHeight: "100vh",
+        height: "100%",
+      }}
+    >
+      <Box
+        sx={{
+          display: "flex",
+          flexDirection: "column",
+          alignSelf: "center",
+          width: "20%",
+          height: "15%",
+          gap: 2,
+        }}
+        component="form"
+      >
         <TextField
-          label="Search by city name, zip code or city ID..."
+          label="Search by city name, zip code or city ID"
           variant="filled"
           fullWidth
           autoComplete="off"
@@ -58,10 +77,13 @@ const Weather = () => {
           onClick={handleClick}
           loading={isLoading}
           type="submit"
+          sx={{
+            width: "100%",
+          }}
         >
           Find
         </LoadingButton>
-      </form>
+      </Box>
 
       {city_name && data && <CurrentWeather data={data} />}
       {error && <h1>{error}</h1>}

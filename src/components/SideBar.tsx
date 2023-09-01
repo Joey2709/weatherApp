@@ -47,14 +47,14 @@ const SideBar = ({ colorMode, mode }: SideBarProps) => {
   };
 
   return (
-    <Box className="absolute">
+    <Box sx={{ position: "absolute" }}>
       <ToggleButton
         value="left"
         selected={open}
         onClick={handleClicka}
-        className="relative min-h"
         sx={{
           backgroundColor: "primary.main",
+          position: "relative",
         }}
       >
         <IconLayoutNavbarExpand />
@@ -77,7 +77,7 @@ const SideBar = ({ colorMode, mode }: SideBarProps) => {
       >
         <MenuItem>
           <Button
-            className="flex flex-col gap-3"
+            sx={{ display: "flex", flexDirection: "column", gap: 1 }}
             onClick={() => {
               handleClick("weather");
             }}
@@ -91,7 +91,7 @@ const SideBar = ({ colorMode, mode }: SideBarProps) => {
 
         <MenuItem>
           <Button
-            className="flex flex-col gap-3"
+            sx={{ display: "flex", flexDirection: "column", gap: 1 }}
             onClick={() => {
               handleClick("settings");
             }}

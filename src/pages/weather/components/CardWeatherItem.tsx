@@ -1,13 +1,13 @@
-import { Box, Card, CardContent, Icon, Typography } from "@mui/material";
+import { Card, CardContent, Icon, Typography } from "@mui/material";
 
-interface CardWeatherProps {
-  data?: number | string;
+interface CardWeatherItemProps {
+  data: number | string;
   title: string;
   icon: JSX.Element;
   unit: JSX.Element | string;
 }
 
-const CardWeather = ({ data, title, icon, unit }: CardWeatherProps) => {
+const CardWeatherItem = ({ data, title, icon, unit }: CardWeatherItemProps) => {
   return (
     <Card
       sx={{
@@ -25,8 +25,13 @@ const CardWeather = ({ data, title, icon, unit }: CardWeatherProps) => {
         <Typography
           variant="h5"
           component="div"
-          className="flex items-center gap-2 font-bold"
           color="text.secondary"
+          sx={{
+            display: "flex",
+            alignItems: "center",
+            gap: 1,
+            fontWeight: "bold",
+          }}
         >
           <Icon sx={{ color: "#7599E0" }}>{icon}</Icon>
           {data} {unit}
@@ -36,4 +41,4 @@ const CardWeather = ({ data, title, icon, unit }: CardWeatherProps) => {
   );
 };
 
-export default CardWeather;
+export default CardWeatherItem;
