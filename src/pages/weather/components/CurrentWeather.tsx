@@ -37,7 +37,7 @@ const CurrentWeather = ({ data }: CurrentWeatherProps) => {
         flexWrap: "wrap",
         width: "100%",
         gap: 2,
-        height: "85%",
+        height: "80%",
       }}
       component="main"
     >

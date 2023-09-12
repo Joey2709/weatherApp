@@ -39,6 +39,7 @@ const Weather = () => {
         width: "100%",
         minHeight: "100vh",
         height: "100%",
+        padding: 2,
       }}
     >
       <Box

@@ -10,9 +10,9 @@ import {
   Typography,
 } from "@mui/material";
 import ThermostatIcon from "@mui/icons-material/Thermostat";
-import AppsIcon from "@mui/icons-material/Apps";
-import SettingsSuggestIcon from "@mui/icons-material/SettingsSuggest";
 
+import SettingsSuggestIcon from "@mui/icons-material/SettingsSuggest";
+import { useLocation } from "react-router-dom";
 import {
   IconBrightnessDown,
   IconMoonStars,
@@ -24,15 +24,17 @@ import { useState } from "react";
 
 const colorIcon = "#7599E0";
 
-interface SideBarProps {
+interface MenuWeatherProps {
   colorMode: {
     toggleColorMode: () => void;
   };
   mode: PaletteMode;
 }
 
-const SideBar = ({ colorMode, mode }: SideBarProps) => {
+const MenuWeather = ({ colorMode, mode }: MenuWeatherProps) => {
   const navigate = useNavigate();
+  const { pathname } = useLocation();
+
   const handleClick = (str: string) => {
     navigate(`/${str}`);
   };
@@ -55,6 +57,20 @@ const SideBar = ({ colorMode, mode }: SideBarProps) => {
         sx={{
           backgroundColor: "primary.main",
           position: "relative",
+          left: 16,
+          top: 16,
+          "&.Mui-selected": {
+            backgroundColor: "primary.main",
+            color: "text.secondary",
+          },
+          ".Mui-selected:hover": {
+            backgroundColor: "background.main",
+            color: "text.secondary",
+          },
+          "&.MuiToggleButton-root:hover": {
+            backgroundColor: "background.paper",
+          },
+          color: "text.secondary",
         }}
       >
         <IconLayoutNavbarExpand />
@@ -74,8 +90,22 @@ const SideBar = ({ colorMode, mode }: SideBarProps) => {
             gap: 1.5,
           },
         }}
+        MenuListProps={{
+          "aria-labelledby": "lock-button",
+          role: "listbox",
+        }}
       >
-        <MenuItem>
+        <MenuItem
+          sx={{
+            "&.Mui-selected": {
+              backgroundColor: "background.main",
+            },
+            "&.Mui-selected:hover": {
+              backgroundColor: "background.main",
+            },
+          }}
+          selected={pathname === "/weather"}
+        >
           <Button
             sx={{ display: "flex", flexDirection: "column", gap: 1 }}
             onClick={() => {
@@ -89,7 +119,18 @@ const SideBar = ({ colorMode, mode }: SideBarProps) => {
           </Button>
         </MenuItem>
 
-        <MenuItem>
+        <MenuItem
+          sx={{
+            "&.Mui-selected": {
+              backgroundColor: "background.main",
+            },
+            "&.Mui-selected:hover": {
+              backgroundColor: "background.main",
+            },
+          }}
+          selected={pathname === "/settings"}
+          divider
+        >
           <Button
             sx={{ display: "flex", flexDirection: "column", gap: 1 }}
             onClick={() => {
@@ -109,9 +150,12 @@ const SideBar = ({ colorMode, mode }: SideBarProps) => {
           checkedIcon={<IconMoonStars />}
           checked={mode === "dark"}
         />
+        <Typography variant="body1" color="text.secondary">
+          {mode === "dark" ? "Dark Mode" : "Light Mode"}
+        </Typography>
       </Menu>
     </Box>
   );
 };
 
-export default SideBar;
+export default MenuWeather;
