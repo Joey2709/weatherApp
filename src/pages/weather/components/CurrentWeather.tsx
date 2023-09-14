@@ -167,7 +167,7 @@ const CurrentWeather = ({ data }: CurrentWeatherProps) => {
         sx={{
           display: "flex",
           flexWrap: "wrap",
-          gap: 3,
+          gap: 2,
           height: "min-content",
           maxWidth: "448px",
         }}

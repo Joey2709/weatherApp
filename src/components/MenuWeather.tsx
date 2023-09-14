@@ -1,4 +1,12 @@
-import { useNavigate } from "react-router-dom";
+import {
+  matchPath,
+  matchRoutes,
+  renderMatches,
+  resolvePath,
+  useMatch,
+  useMatches,
+  useNavigate,
+} from "react-router-dom";
 
 import {
   Box,
@@ -20,7 +28,7 @@ import {
 } from "@tabler/icons-react";
 
 import SwitchDarkMode from "./SwitchDarkMode";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 const colorIcon = "#7599E0";
 
@@ -33,7 +41,7 @@ interface MenuWeatherProps {
 
 const MenuWeather = ({ colorMode, mode }: MenuWeatherProps) => {
   const navigate = useNavigate();
-  const { pathname } = useLocation();
+  const pathname = resolvePath(useLocation().pathname, "/weather");
 
   const handleClick = (str: string) => {
     navigate(`/${str}`);
@@ -47,6 +55,10 @@ const MenuWeather = ({ colorMode, mode }: MenuWeatherProps) => {
   const handleClose = () => {
     setAnchorEl(null);
   };
+
+  useEffect(() => {
+    console.log(pathname);
+  }, [pathname]);
 
   return (
     <Box sx={{ position: "absolute" }}>
@@ -104,7 +116,7 @@ const MenuWeather = ({ colorMode, mode }: MenuWeatherProps) => {
               backgroundColor: "background.main",
             },
           }}
-          selected={pathname === "/weather"}
+          //selected={pathname === "/weather"}
         >
           <Button
             sx={{ display: "flex", flexDirection: "column", gap: 1 }}
@@ -128,7 +140,7 @@ const MenuWeather = ({ colorMode, mode }: MenuWeatherProps) => {
               backgroundColor: "background.main",
             },
           }}
-          selected={pathname === "/settings"}
+          //selected={pathname === "/settings"}
           divider
         >
           <Button

@@ -8,6 +8,8 @@ import SearchIcon from "@mui/icons-material/Search";
 
 import CurrentWeather from "./components/CurrentWeather";
 import useFetch from "../../hooks/useFetch";
+import Loading from "./components/Loading";
+import NotFound from "./components/NotFound";
 
 const Weather = () => {
   const navigate = useNavigate();
@@ -40,6 +42,7 @@ const Weather = () => {
         minHeight: "100vh",
         height: "100%",
         padding: 2,
+        gap: 3,
       }}
     >
       <Box
@@ -87,7 +90,8 @@ const Weather = () => {
       </Box>
 
       {city_name && data && <CurrentWeather data={data} />}
-      {error && <h1>{error}</h1>}
+      {isLoading && <Loading />}
+      {error && <NotFound city={cityName} />}
     </Box>
   );
 };
