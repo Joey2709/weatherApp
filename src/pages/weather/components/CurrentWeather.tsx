@@ -45,6 +45,8 @@ const CurrentWeather = ({ data }: CurrentWeatherProps) => {
         sx={{
           width: "30%",
           minHeight: "min-content",
+          flex: "1 auto",
+          minWidth: "470px",
         }}
         component="section"
       >
@@ -56,7 +58,13 @@ const CurrentWeather = ({ data }: CurrentWeatherProps) => {
             backgroundImage: "initial",
           }}
         >
-          <CardContent>
+          <CardContent
+            sx={{
+              display: "flex",
+              flexDirection: "column",
+              gap: 1.5,
+            }}
+          >
             <Typography variant="h3" color="text.secondary">
               {capitalize(data.city_name)}
             </Typography>
@@ -221,7 +229,16 @@ const CurrentWeather = ({ data }: CurrentWeatherProps) => {
           />
         </Map>
       </Box>
-      <Box sx={{ display: "flex", gap: 2, height: "100%" }} component="section">
+      <Box
+        sx={{
+          display: "flex",
+          gap: 2,
+          height: "100%",
+          flexDirection: "column",
+          flex: "1 auto",
+        }}
+        component="section"
+      >
         <Typography variant="h5" color="text.secondary">
           Hourly Forecast
         </Typography>
