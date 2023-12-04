@@ -16,6 +16,15 @@ export const getDesignTokens = (mode: PaletteMode) => ({
             primary: "#e5e5e5",
             secondary: "#3F2305",
           },
+          breakpoints: {
+            values: {
+              xs: 0,
+              sm: 600,
+              md: 960,
+              lg: 1280,
+              xl: 1920,
+            },
+          },
         }
       : {
           // palette values for dark mode
@@ -27,6 +36,15 @@ export const getDesignTokens = (mode: PaletteMode) => ({
           text: {
             primary: "#e5e5e5",
             secondary: "#fff",
+          },
+          breakpoints: {
+            values: {
+              xs: 0,
+              sm: 600,
+              md: 960,
+              lg: 1280,
+              xl: 1920,
+            },
           },
         }),
   },

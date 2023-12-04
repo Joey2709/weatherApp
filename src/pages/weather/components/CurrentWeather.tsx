@@ -43,10 +43,15 @@ const CurrentWeather = ({ data }: CurrentWeatherProps) => {
     >
       <Box
         sx={{
-          width: "30%",
+          width: {
+            md: "30%",
+            sm: "100%",
+          },
           minHeight: "min-content",
           flex: "1 auto",
-          minWidth: "470px",
+          minWidth: {
+            md: "447px",
+          },
         }}
         component="section"
       >
@@ -177,7 +182,10 @@ const CurrentWeather = ({ data }: CurrentWeatherProps) => {
           flexWrap: "wrap",
           gap: 2,
           height: "min-content",
-          maxWidth: "448px",
+          width: {
+            md: "30%",
+            sm: "100%",
+          },
         }}
         component="section"
       >

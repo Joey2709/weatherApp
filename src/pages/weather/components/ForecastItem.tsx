@@ -1,4 +1,4 @@
-import { Card, CardContent, Box, Typography } from "@mui/material";
+import { Box, Typography } from "@mui/material";
 import { getSunrise, getDateFromDt } from "../../../utils/utils";
 import { MainClassI, WeatherForecastI } from "../../../utils/entities";
 import { IconRipple, IconDropletHalf2Filled } from "@tabler/icons-react";
