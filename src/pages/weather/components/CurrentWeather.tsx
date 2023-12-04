@@ -70,7 +70,7 @@ const CurrentWeather = ({ data }: CurrentWeatherProps) => {
               gap: 1.5,
             }}
           >
-            <Typography variant="h3" color="text.secondary">
+            <Typography variant="h3" color="text.secondary" fontSize={40}>
               {capitalize(data.city_name)}
             </Typography>
             <Typography
