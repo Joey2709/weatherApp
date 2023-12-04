@@ -50,7 +50,10 @@ const Weather = () => {
           display: "flex",
           flexDirection: "column",
           alignSelf: "center",
-          width: "20%",
+          width: {
+            md: "20%",
+            sm: "50%",
+          },
           height: "15%",
           gap: 2,
         }}
