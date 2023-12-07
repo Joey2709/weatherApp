@@ -69,12 +69,21 @@ const ForecastItem = ({ dt, weather, main }: ForecastItemProps) => {
       <Typography variant="h4" color="text.secondary">
         {main.temp.toFixed(0)}°C
       </Typography>
-      <img
-        src={`https://openweathermap.org/img/wn/${weather[0].icon}.png`}
-        alt={weather[0].icon}
-        width="65px"
-        height="65px"
-      />
+      <Box
+        sx={{
+          marginRight: {
+            xs: "auto",
+            sm: 0,
+          },
+        }}
+      >
+        <img
+          src={`https://openweathermap.org/img/wn/${weather[0].icon}.png`}
+          alt={weather[0].icon}
+          width="65px"
+          height="65px"
+        />
+      </Box>
     </Box>
   );
 };

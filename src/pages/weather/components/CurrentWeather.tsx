@@ -7,8 +7,6 @@ import {
   IconTemperature,
   IconTemperaturePlus,
   IconDropletHalf2Filled,
-  IconPercentage,
-  IconTemperatureCelsius,
   IconTemperatureMinus,
   IconSunrise,
   IconSunset,
@@ -29,6 +27,14 @@ interface CurrentWeatherProps {
   data: CurrentWeatherI;
 }
 
+/*
+xs, extra-small: 0px
+sm, small: 600px
+md, medium: 900px
+lg, large: 1200px
+xl, extra-large: 1536px 
+*/
+
 const CurrentWeather = ({ data }: CurrentWeatherProps) => {
   return (
     <Box
@@ -44,8 +50,9 @@ const CurrentWeather = ({ data }: CurrentWeatherProps) => {
       <Box
         sx={{
           width: {
+            xs: "100%",
+            sm: "50%",
             md: "20%",
-            sm: "100%",
           },
           minHeight: "min-content",
           flex: "1 auto",
@@ -193,8 +200,9 @@ const CurrentWeather = ({ data }: CurrentWeatherProps) => {
           gap: 2,
           height: "min-content",
           width: {
-            md: "30%",
-            sm: "100%",
+            xs: "100%",
+            lg: "50%",
+            xl: "30%",
           },
         }}
         component="section"
@@ -215,47 +223,53 @@ const CurrentWeather = ({ data }: CurrentWeatherProps) => {
           data={data.main.feels_like}
           title={"Feels Like"}
           icon={<IconTemperature />}
-          unit={<IconTemperatureCelsius />}
+          unit={" °C"}
         />
         <CardWeather
           data={data.main.temp_max}
           title={"Humidity"}
           icon={<IconDropletHalf2Filled />}
-          unit={<IconPercentage />}
+          unit={" %"}
         />
         <CardWeather
           data={data.main.temp_min}
           title={"Temp Min"}
           icon={<IconTemperatureMinus />}
-          unit={<IconTemperatureCelsius />}
+          unit={" °C"}
         />
         <CardWeather
           data={data.main.temp_max}
           title={"Temp Max"}
           icon={<IconTemperaturePlus />}
-          unit={<IconTemperatureCelsius />}
+          unit={" °C"}
         />
-        <Map
-          height={300}
-          defaultZoom={10}
-          center={[data.coord.lat, data.coord.lon]}
-        >
-          <Marker
-            width={40}
-            anchor={[data.coord.lat, data.coord.lon]}
-            color={"#ff0000"}
-          />
-        </Map>
+        <Box sx={{ width: "100%", height: 300 }}>
+          <Map
+            height={300}
+            defaultZoom={10}
+            center={[data.coord.lat, data.coord.lon]}
+          >
+            <Marker
+              width={40}
+              anchor={[data.coord.lat, data.coord.lon]}
+              color={"#ff0000"}
+            />
+          </Map>
+        </Box>
       </Box>
       <Box
         sx={{
           display: "flex",
           gap: 2,
-          height: "20%",
-          maxHeight: "20%",
-          minHeight: "20%",
           flexDirection: "column",
           flex: "1 auto",
+          width: {
+            lg: "30%",
+            sm: "100%",
+          },
+          minWidth: {
+            lg: "546px",
+          },
         }}
         component="section"
       >
