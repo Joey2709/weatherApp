@@ -14,19 +14,26 @@ const ForecastItem = ({ dt, weather, main }: ForecastItemProps) => {
     <Box
       sx={{
         backgroundColor: "primary.main",
-        backgroundImage: "initial",
         display: "flex",
         flexWrap: "wrap",
         alignItems: "center",
         justifyContent: "space-between",
         minHeight: "min-content",
         padding: 2,
-        height: "min-content",
-        gap: 1,
+        gap: 2,
+        borderRadius: "4px",
       }}
     >
-      <Box>
-        <Typography variant="body1" color="text.secondary" mb={1}>
+      <Box
+        sx={{
+          display: "flex",
+          flexDirection: "column",
+          gap: 2,
+          flexWrap: "wrap",
+          justifyItems: "center",
+        }}
+      >
+        <Typography variant="body1" color="text.secondary">
           {getSunrise(dt)}
         </Typography>
         <Typography variant="body1" color="text.secondary">
@@ -36,13 +43,16 @@ const ForecastItem = ({ dt, weather, main }: ForecastItemProps) => {
       <Box
         sx={{
           minWidth: "231px",
+          display: "flex",
+          flexDirection: "column",
+          gap: 2,
+          flexWrap: "wrap",
         }}
       >
         <Typography
           variant="body1"
           color="text.secondary"
-          sx={{ display: "flex", gap: "0.25rem" }}
-          mb={1}
+          sx={{ display: "flex", gap: "0.25rem", alignItems: "center" }}
         >
           <IconRipple />
           Conditions: {weather[0].description}
@@ -50,7 +60,7 @@ const ForecastItem = ({ dt, weather, main }: ForecastItemProps) => {
         <Typography
           variant="body1"
           color="text.secondary"
-          sx={{ display: "flex", gap: "0.25rem" }}
+          sx={{ display: "flex", gap: "0.25rem", alignItems: "center" }}
         >
           <IconDropletHalf2Filled />
           Humidity: {main.humidity}

@@ -59,7 +59,6 @@ const CurrentWeather = ({ data }: CurrentWeatherProps) => {
           sx={{
             width: "100%",
             backgroundColor: "primary.main",
-            height: "100%",
             backgroundImage: "initial",
           }}
         >
@@ -70,11 +69,11 @@ const CurrentWeather = ({ data }: CurrentWeatherProps) => {
               gap: 1.5,
             }}
           >
-            <Typography variant="h3" color="text.secondary" fontSize={40}>
+            <Typography variant="h3" color="text.secondary" fontSize={30}>
               {capitalize(data.city_name)}
             </Typography>
             <Typography
-              variant="h6"
+              fontSize={20}
               color="text.secondary"
               sx={{ display: "flex", alignItems: "center", gap: 1 }}
             >
@@ -82,7 +81,7 @@ const CurrentWeather = ({ data }: CurrentWeatherProps) => {
               {data.country.name.common}
             </Typography>
             <Typography
-              variant="h6"
+              fontSize={20}
               color="text.secondary"
               sx={{ display: "flex", alignItems: "center", gap: 1 }}
             >
@@ -95,12 +94,21 @@ const CurrentWeather = ({ data }: CurrentWeatherProps) => {
               width="80px"
               height="80px"
             />
-            <Box sx={{ display: "flex", justifyContent: "space-between" }}>
-              <Typography variant="h2" color="text.secondary">
+            <Box
+              sx={{
+                display: "flex",
+                justifyContent: "space-between",
+                alignItems: "center",
+                flexWrap: "wrap",
+                gap: 1,
+              }}
+            >
+              <Typography variant="h3" color="text.secondary" fontSize={40}>
                 {data.main.temp.toFixed(0)}°C
               </Typography>
               <Typography
-                fontSize={30}
+                variant="h3"
+                fontSize={40}
                 color="text.secondary"
                 sx={{ display: "flex", alignItems: "center", height: "72px" }}
               >
@@ -108,7 +116,7 @@ const CurrentWeather = ({ data }: CurrentWeatherProps) => {
               </Typography>
             </Box>
             <Divider sx={{ marginY: 2 }} />
-            <Typography variant="h5" color="text.secondary">
+            <Typography variant="h5" color="text.secondary" fontSize={30}>
               Sunrise & Sunset
             </Typography>
             <CardContent
@@ -119,26 +127,27 @@ const CurrentWeather = ({ data }: CurrentWeatherProps) => {
                 gap: 2,
                 backgroundColor: "background.paper",
                 borderRadius: "8px",
+                flexWrap: "wrap",
               }}
             >
               <Box sx={{ display: "flex", alignItems: "center", gap: 2 }}>
                 <SvgIcon
-                  sx={{ color: "#bfbfbf", width: "55px", height: "55px" }}
+                  sx={{ color: "#bfbfbf", width: "40px", height: "40px" }}
                 >
                   <IconSunrise />
                 </SvgIcon>
                 <Box
                   sx={{ display: "flex", flexDirection: "column", gap: 0.5 }}
                 >
-                  <Typography variant="h6" color="#bfbfbf">
+                  <Typography variant="h6" color="#bfbfbf" fontSize={20}>
                     Sunrise
                   </Typography>
-                  <Typography variant="h4" color="text.secondary">
+                  <Typography variant="h4" color="text.secondary" fontSize={25}>
                     {getSunrise(data.sys.sunrise)}
                   </Typography>
                 </Box>
               </Box>
-              <Typography variant="h6" color="#e0e0e0">
+              <Typography variant="h6" color="#e0e0e0" fontSize={20}>
                 {getHourAgo(data.sys.sunrise)}
               </Typography>
             </CardContent>
@@ -147,29 +156,30 @@ const CurrentWeather = ({ data }: CurrentWeatherProps) => {
                 display: "center",
                 alignItems: "center",
                 justifyContent: "space-between",
-                mt: 2,
+                gap: 2,
                 backgroundColor: "background.paper",
                 borderRadius: "8px",
+                flexWrap: "wrap",
               }}
             >
               <Box sx={{ display: "flex", alignItems: "center", gap: 2 }}>
                 <SvgIcon
-                  sx={{ color: "#bfbfbf", width: "55px", height: "55px" }}
+                  sx={{ color: "#bfbfbf", width: "40px", height: "40px" }}
                 >
                   <IconSunset />
                 </SvgIcon>
                 <Box
                   sx={{ display: "flex", flexDirection: "column", gap: 0.5 }}
                 >
-                  <Typography variant="h6" color="#bfbfbf">
+                  <Typography variant="h6" color="#bfbfbf" fontSize={20}>
                     Sunset
                   </Typography>
-                  <Typography variant="h4" color="text.secondary">
+                  <Typography variant="h4" color="text.secondary" fontSize={25}>
                     {getSunrise(data.sys.sunset)}
                   </Typography>
                 </Box>
               </Box>
-              <Typography variant="h6" color="#e0e0e0">
+              <Typography variant="h6" color="#e0e0e0" fontSize={20}>
                 {getHourAgo(data.sys.sunset)}
               </Typography>
             </CardContent>
@@ -241,7 +251,9 @@ const CurrentWeather = ({ data }: CurrentWeatherProps) => {
         sx={{
           display: "flex",
           gap: 2,
-          height: "100%",
+          height: "20%",
+          maxHeight: "20%",
+          minHeight: "20%",
           flexDirection: "column",
           flex: "1 auto",
         }}
@@ -257,7 +269,7 @@ const CurrentWeather = ({ data }: CurrentWeatherProps) => {
             flexDirection: "column",
             gap: 3,
             overflowY: "auto",
-            maxHeight: "75vh",
+            maxHeight: "65vh",
           }}
         >
           {data?.forecast.list.map((e) => (

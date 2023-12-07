@@ -39,8 +39,7 @@ const Weather = () => {
         display: "flex",
         flexDirection: "column",
         width: "100%",
-        minHeight: "100vh",
-        height: "100%",
+        //height: "100vh",
         padding: 2,
         gap: 3,
       }}
@@ -51,8 +50,9 @@ const Weather = () => {
           flexDirection: "column",
           alignSelf: "center",
           width: {
-            md: "20%",
+            md: "25%",
             sm: "50%",
+            xs: "100%",
           },
           height: "15%",
           gap: 2,

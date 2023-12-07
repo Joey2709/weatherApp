@@ -14,7 +14,7 @@ function App() {
   const { theme, colorMode, mode } = useDarkmode();
   return (
     <ThemeProvider theme={theme}>
-      <Box sx={{ backgroundColor: "background.main" }}>
+      <Box sx={{ backgroundColor: "background.main", height: "100vh" }}>
         <MenuWeather colorMode={colorMode} mode={mode} />
         <AppRouter />
       </Box>

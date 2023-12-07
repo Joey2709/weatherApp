@@ -14,7 +14,7 @@ const SwitchDarkMode = styled((props: SwitchProps) => (
       transform: "translateX(23px)",
       color: "#fff",
       "& + .MuiSwitch-track": {
-        backgroundColor: theme.palette.mode === "dark" ? "#1F2B3B" : "#808691",
+        backgroundColor: theme.palette.mode === "dark" ? "#35455E" : "#808691",
         opacity: 1,
       },
     },
