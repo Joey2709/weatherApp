@@ -39,7 +39,7 @@ const Weather = () => {
         display: "flex",
         flexDirection: "column",
         width: "100%",
-        //height: "100vh",
+        backgroundColor: "background.main",
         padding: 2,
         gap: 3,
       }}

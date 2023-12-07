@@ -63,11 +63,11 @@ const ForecastItem = ({ dt, weather, main }: ForecastItemProps) => {
           sx={{ display: "flex", gap: "0.25rem", alignItems: "center" }}
         >
           <IconDropletHalf2Filled />
-          Humidity: {main.humidity}
+          Humidity: {main.humidity}%
         </Typography>
       </Box>
       <Typography variant="h4" color="text.secondary">
-        {main.temp.toFixed(0)} °C
+        {main.temp.toFixed(0)}°C
       </Typography>
       <img
         src={`https://openweathermap.org/img/wn/${weather[0].icon}.png`}

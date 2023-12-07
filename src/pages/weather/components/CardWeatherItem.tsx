@@ -14,7 +14,7 @@ const CardWeatherItem = ({ data, title, icon, unit }: CardWeatherItemProps) => {
         flex: 1,
         backgroundColor: "primary.main",
         height: "min-content",
-        minWidth: "161px",
+        minWidth: "200px",
         backgroundImage: "initial",
       }}
     >
@@ -24,13 +24,12 @@ const CardWeatherItem = ({ data, title, icon, unit }: CardWeatherItemProps) => {
         </Typography>
         <Typography
           variant="h5"
-          component="div"
           color="text.secondary"
           sx={{
             display: "flex",
             alignItems: "center",
             gap: 1,
-            fontWeight: "bold",
+            fontWeight: "500",
           }}
         >
           <Icon sx={{ color: "#7599E0" }}>{icon}</Icon>

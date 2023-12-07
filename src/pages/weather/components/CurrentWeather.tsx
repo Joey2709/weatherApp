@@ -44,7 +44,7 @@ const CurrentWeather = ({ data }: CurrentWeatherProps) => {
       <Box
         sx={{
           width: {
-            md: "30%",
+            md: "20%",
             sm: "100%",
           },
           minHeight: "min-content",
@@ -108,7 +108,7 @@ const CurrentWeather = ({ data }: CurrentWeatherProps) => {
               </Typography>
               <Typography
                 variant="h3"
-                fontSize={40}
+                fontSize={30}
                 color="text.secondary"
                 sx={{ display: "flex", alignItems: "center", height: "72px" }}
               >
