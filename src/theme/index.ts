@@ -7,10 +7,10 @@ export const getDesignTokens = (mode: PaletteMode) => ({
     ...(mode === "light"
       ? {
           // palette values for light mode
-          primary: { main: "#484bb6" }, //b2dffe
+          primary: { main: "#484bb6" },
           background: {
-            paper: "#41434c", //b2dffe
-            main: "#25275e", //e4f2f6
+            paper: "#41434c",
+            main: "#25275e",
           },
           text: {
             primary: "#b1b6ce",
@@ -19,10 +19,10 @@ export const getDesignTokens = (mode: PaletteMode) => ({
         }
       : {
           // palette values for dark mode
-          primary: { main: "#35455E" }, //1F2B3B
+          primary: { main: "#35455E" },
           background: {
-            paper: "#1F2B3B", //35455E
-            main: "#0b131e", //0b131e
+            paper: "#1F2B3B",
+            main: "#0b131e",
           },
           text: {
             primary: "#e5e5e5",
@@ -33,14 +33,16 @@ export const getDesignTokens = (mode: PaletteMode) => ({
 });
 
 export const useDarkmode = () => {
-  const [mode, setMode] = useState<PaletteMode>("dark");
+  const auxMode = window.localStorage.getItem("mode") ?? "dark";
+  const [mode, setMode] = useState<PaletteMode>(auxMode as PaletteMode);
   const colorMode = useMemo(
     () => ({
-      // The dark mode switch would invoke this method
       toggleColorMode: () => {
-        setMode((prevMode: PaletteMode) =>
-          prevMode === "light" ? "dark" : "light"
-        );
+        setMode((prevMode: PaletteMode) => {
+          const newMode = prevMode === "light" ? "dark" : "light";
+          window.localStorage.setItem("mode", newMode);
+          return newMode;
+        });
       },
     }),
     []
