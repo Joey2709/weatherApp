@@ -16,8 +16,17 @@ const NotFound = ({ city }: NotFoundProps) => {
         margin: "auto",
       }}
     >
-      <img src={NotFoundSVG} alt="Not Found" width={400} />
-      <Typography variant="h2" color="text.secondary">
+      <img src={NotFoundSVG} alt="Not Found" width={"100%"} height={"auto"} />
+      <Typography
+        variant="h2"
+        color="text.secondary"
+        fontSize={{
+          xs: 30,
+          sm: 40,
+          md: 50,
+          lg: 60,
+        }}
+      >
         {capitalize(city)} not found
       </Typography>
     </Box>
