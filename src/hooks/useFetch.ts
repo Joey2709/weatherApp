@@ -40,13 +40,6 @@ const useFetch = () => {
 
       const respDataForecast = await respForecast.json();
 
-      console.log({
-        ...responseDataWeather,
-        country: responseDataCountry,
-        city_name,
-        forecast: respDataForecast,
-      });
-
       setData({
         ...responseDataWeather,
         country: responseDataCountry,
