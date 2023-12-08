@@ -94,7 +94,7 @@ const Weather = () => {
 
       {city_name && data && <CurrentWeather data={data} />}
       {isLoading && <Loading />}
-      {error && <NotFound city={cityName} />}
+      {error && <NotFound city={city_name ?? ""} />}
     </Box>
   );
 };
