@@ -5,7 +5,7 @@ const AppRouter = () => {
   return (
     <>
       <Routes>
-        <Route path="/*" element={<Navigate to="/weather" replace />} />
+        {<Route path="/*" element={<Navigate to="/weather" replace />} />}
         <Route path="/weather" element={<Weather />} />
         <Route path="/weather/:city_name" element={<Weather />} />
       </Routes>
