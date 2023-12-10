@@ -4,7 +4,7 @@ import Weather from "../pages/weather/Weather";
 const AppRouter = () => {
   return (
     <Routes>
-      <Route path="/*" element={<Navigate to="/" />} />
+      <Route path="/*" element={<Navigate to="/" replace />} />
       <Route path="/" element={<Weather />} />
       <Route path="/:city_name" element={<Weather />} />
     </Routes>
