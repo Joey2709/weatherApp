@@ -3,13 +3,11 @@ import Weather from "../pages/weather/Weather";
 
 const AppRouter = () => {
   return (
-    <>
-      <Routes>
-        {<Route path="/*" element={<Navigate to="/weather" replace />} />}
-        <Route path="/weather" element={<Weather />} />
-        <Route path="/weather/:city_name" element={<Weather />} />
-      </Routes>
-    </>
+    <Routes>
+      <Route path="/*" element={<Navigate to="/" />} />
+      <Route path="/" element={<Weather />} />
+      <Route path="/:city_name" element={<Weather />} />
+    </Routes>
   );
 };
 
