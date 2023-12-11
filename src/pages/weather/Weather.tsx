@@ -28,6 +28,7 @@ const Weather = () => {
   useEffect(() => {
     if (cityName !== "") {
       getFetch(cityName);
+      navigate("/weatherApp/" + cityName.toLowerCase(), { replace: true });
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
