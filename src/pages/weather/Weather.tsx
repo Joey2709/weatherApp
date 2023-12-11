@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 
-import { useNavigate, useParams } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 import { Box, TextField } from "@mui/material";
 import LoadingButton from "@mui/lab/LoadingButton";
@@ -10,23 +10,25 @@ import CurrentWeather from "./components/CurrentWeather";
 import useFetch from "../../hooks/useFetch";
 import Loading from "./components/Loading";
 import NotFound from "./components/NotFound";
+import useQuery from "../../hooks/useQuery";
 
 const Weather = () => {
   const navigate = useNavigate();
-  const { city_name } = useParams();
-  const [cityName, setCityName] = useState("");
+  const query = useQuery();
+  const [cityName, setCityName] = useState(query.get("search") ?? "");
 
   const { data, error, isLoading, getFetch } = useFetch();
 
   const handleClick = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
     e.preventDefault();
-    navigate("/weatherApp/" + cityName.toLowerCase(), { replace: true });
+    navigate("/weatherApp?search=" + cityName.toLowerCase());
     getFetch(cityName);
   };
 
   useEffect(() => {
-    if (city_name) {
-      getFetch(city_name);
+    console.log(cityName);
+    if (cityName) {
+      getFetch(cityName);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
@@ -91,9 +93,9 @@ const Weather = () => {
         </LoadingButton>
       </Box>
 
-      {city_name && data && <CurrentWeather data={data} />}
+      {cityName && data && <CurrentWeather data={data} />}
       {isLoading && <Loading />}
-      {error && <NotFound city={city_name ?? ""} />}
+      {error && <NotFound city={query.get("search") ?? ""} />}
     </Box>
   );
 };

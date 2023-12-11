@@ -6,7 +6,6 @@ const AppRouter = () => {
     <Routes>
       <Route path="/*" element={<Navigate to="/weatherApp" replace />} />
       <Route path="/weatherApp" element={<Weather />} />
-      <Route path="/weatherApp/:city_name" element={<Weather />} />
     </Routes>
   );
 };

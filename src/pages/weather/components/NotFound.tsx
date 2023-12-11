@@ -16,7 +16,13 @@ const NotFound = ({ city }: NotFoundProps) => {
         margin: "auto",
       }}
     >
-      <img src={NotFoundSVG} alt="Not Found" width={"100%"} height={"auto"} />
+      <img
+        src={NotFoundSVG}
+        alt="Not Found"
+        width={"100%"}
+        height={"auto"}
+        style={{ maxWidth: "480px" }}
+      />
       <Typography
         variant="h2"
         color="text.secondary"
