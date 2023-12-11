@@ -21,7 +21,7 @@ const Weather = () => {
 
   const handleClick = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
     e.preventDefault();
-    navigate("/weather-app-react/" + cityName.toLowerCase(), { replace: true });
+    navigate("/weatherApp/" + cityName.toLowerCase(), { replace: true });
     getFetch(cityName);
   };
 
