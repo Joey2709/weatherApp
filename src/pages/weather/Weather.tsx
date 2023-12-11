@@ -14,8 +14,7 @@ import NotFound from "./components/NotFound";
 const Weather = () => {
   const navigate = useNavigate();
   const { city_name } = useParams();
-
-  const [cityName, setCityName] = useState(city_name?.toLowerCase() ?? "");
+  const [cityName, setCityName] = useState("");
 
   const { data, error, isLoading, getFetch } = useFetch();
 
@@ -26,9 +25,8 @@ const Weather = () => {
   };
 
   useEffect(() => {
-    if (cityName !== "") {
-      getFetch(cityName);
-      navigate("/weatherApp/" + cityName.toLowerCase(), { replace: true });
+    if (city_name) {
+      getFetch(city_name);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
